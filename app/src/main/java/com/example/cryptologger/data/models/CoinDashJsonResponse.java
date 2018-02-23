@@ -22,27 +22,36 @@ import static java.lang.Double.parseDouble;
 
 public class CoinDashJsonResponse {
 
-
+    // global instances
     public String jsonResponse;
+
+    // list to keep dynamic key value pairs
     public List<Entry> entries = new ArrayList<>();
 
+    // log reference TAG
     public String TAG = "CounDashJsonResponse";
 
+    // class constructor
     public CoinDashJsonResponse(String jsonResponse) {
         this.jsonResponse = jsonResponse;
     }
 
+    // a method to log response
     public void logResponse() {
         Log.d(TAG, "Response" + jsonResponse);
     }
 
+    // method to extract key value pair
     public List<Entry> getKeyValueData() {
 
         try {
+            //create a json object
             JSONObject object = new JSONObject(jsonResponse).getJSONObject("bpi");
 
+            //create a list of key:value pairs
             String[] list = object.toString().replace("{", "").replace("}", "").split(",");
 
+            //traverse list and split key and value from single string
             int i = 0;
             while (i < list.length) {
                 splitNadd(list[i]);
@@ -70,7 +79,6 @@ public class CoinDashJsonResponse {
 //            dataPairs.put(date,parseDouble(key[1]));
 //            Log.d(TAG, "Date: " + date.getTime());
 
-
             float value = (float) parseDouble(key[1]);
             entries.add(new Entry(date.getTime(), value));
 
@@ -80,6 +88,7 @@ public class CoinDashJsonResponse {
 
     }
 
+    // method to get extract current Bit Coin rate
     public String getCurrentRate() {
 
         String rate = "";
