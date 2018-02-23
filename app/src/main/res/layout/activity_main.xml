@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cryptologger.MainActivity">
+
+    <TextView
+        android:id="@+id/currentRate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="currentRate"
+        android:gravity="center_horizontal"
+        android:padding="5dp" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="#f1f5f8"
+        android:layout_below="@id/currentRate">
+
+    </com.github.mikephil.charting.charts.LineChart>
+
+    <RelativeLayout
+        android:id="@+id/options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chart"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/yearly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last Year" />
+
+        <Button
+            android:id="@+id/monthly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="last month"
+            android:layout_toRightOf="@id/yearly" />
+
+        <Button
+            android:id="@+id/weekly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="last week"
+            android:layout_toRightOf="@id/monthly" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/form"
+        android:layout_marginTop="5dp">
+
+        <RelativeLayout
+            android:id="@+id/dates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_margin="5dp">
+
+            <EditText
+                android:id="@+id/startDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="From : 2018-02-10" />
+
+            <EditText
+                android:id="@+id/endDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="To : 2018-02-23"
+                android:layout_toRightOf="@id/startDate" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/show"
+            android:layout_below="@id/dates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
